@@ -4,7 +4,7 @@
   Designed specifically to work with the Adafruit BMP085 Breakout 
   ----> http://www.adafruit.com/products/751
 
-  These displays use TTL Serial to communicate, 2 pins are required to 
+  These displays use TTL lcd to communicate, 2 pins are required to 
   interface
   Adafruit invests time and resources providing this open source code, 
   please support Adafruit and open-source hardware by purchasing 
@@ -13,19 +13,23 @@
   Written by Limor Fried/Ladyada for Adafruit Industries.  
   BSD license, all text above must be included in any redistribution
  ****************************************************/
+// include the library code:
+#include <LiquidCrystal.h>
 
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 #include <Adafruit_Fingerprint.h>
 
-// On Leonardo/Micro or others with hardware serial, use those! #0 is green wire, #1 is white
+// On Leonardo/Micro or others with hardware lcd, use those! #0 is green wire, #1 is white
 // uncomment this line:
-// #define mySerial Serial1
+// #define mylcd lcd1
 
-// For UNO and others without hardware serial, we must use software serial...
+// For UNO and others without hardware lcd, we must use software lcd...
 // pin #2 is IN from sensor (GREEN wire)
 // pin #3 is OUT from arduino  (WHITE wire)
-// comment these two lines if using hardware serial
-SoftwareSerial mySerial(2, 3);
+// comment these two lines if using hardware lcd
+SoftwareSerial mySerial(8, 9);
 
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
